@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/avudaiappan6208/FrontdeskApp/issues"
   },
-  "homepage": "https://github.com/avudaiappan6208/FrontdeskApp#readme"
+  "homepage": "https://github.com/avudaiappan6208/FrontdeskApp#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }
