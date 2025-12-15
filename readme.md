@@ -1,2 +1,1 @@
-#npm instalation :Done
-I ammf
+npm initialization: Done
