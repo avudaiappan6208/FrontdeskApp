@@ -4,9 +4,9 @@ const userSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    role: { type: String , enum: ['receptionist', 'admin','manager'],default:'receptionist' },
+    role: { type: String, enum: ['receptionist', 'admin', 'manager'], default: 'receptionist' },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
-    
+
 });
-module.exports = mongoose.model('User', userSchema,'Users');
+module.exports = mongoose.model('User', userSchema, 'Users');
