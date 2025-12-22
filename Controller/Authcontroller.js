@@ -47,6 +47,16 @@ const authcontroller = {
             res.status(500).json({ message: error.message });
 
         }
+    },
+
+    logout:async(req,res)=>{
+        try{
+            res.clearCookie('token');
+            res.status(500).json({message:'logout successful'})
+
+        }catch(error){
+            res.status(500).json({message: error.message});
+        }
     }
 }
 module.exports = authcontroller;
