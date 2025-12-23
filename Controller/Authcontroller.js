@@ -39,7 +39,7 @@ const authcontroller = {
             }
 
             const token = jwt.sign({ id: user._id }, SECRET_KEY, { expiresIn: '6h' });
-            res.cookie('token',token,{httpOnly: true});
+            res.cookie('token', token, { httpOnly: true });
 
             res.status(200).json({ message: "login successful" });
 
@@ -49,13 +49,26 @@ const authcontroller = {
         }
     },
 
-    logout:async(req,res)=>{
-        try{
+    logout: async (req, res) => {
+        try {
             res.clearCookie('token');
-            res.status(500).json({message:'logout successful'})
+            res.status(500).json({ message: 'logout successful' })
 
-        }catch(error){
-            res.status(500).json({message: error.message});
+        } catch (error) {
+            res.status(500).json({ message: error.message });
+        }
+    },
+    getme: async (req, res) => {
+        try {
+          const userid = req.userid;
+            const user = await User.findById(userid).select('-password, -__v');
+            if (!user) {
+                return res.status(404).json({ message: 'User not found' });
+            }
+            res.status(200).json({ user });
+
+        }catch (error) {
+            res.status(500).json({ message: error.message });
         }
     }
 }
