@@ -15,7 +15,16 @@ const auth = {
         } catch (error) {
             res.status(500).json({ message: error.message });
         }
+    },
+    // middlewares to allow roles passed as an arguments
+    allowRole: (roles) => {
+        return (req, res, next) => {
+            const userRole = req.user.role;
+            if (!roles.includes(userRole)) {
+                return res.status(403).json({ message: 'Forbidden' });
+            }
+            next();
+        };
     }
-
 }
 module.exports = auth;

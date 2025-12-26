@@ -6,7 +6,7 @@ const authroutes = express.Router();
 
 authroutes.post('/register', authcontroller.register);
 authroutes.post('/login', authcontroller.login);
-authroutes.post('/logout', authcontroller.logout);
+authroutes.post('/logout', auth.checkAuth, authcontroller.logout);
 authroutes.get('/me', auth.checkAuth, authcontroller.getme);
 
 module.exports = authroutes;
